@@ -148,6 +148,7 @@ distribution.
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(playeri, player.x, player.y)
       for i,v in ipairs(lasers) do
+        love.graphics.setColor(0, 1, 0, 1)
         love.graphics.draw(laser, v.x, v.y)
       end
       for i,v in ipairs(invadersDraw) do
