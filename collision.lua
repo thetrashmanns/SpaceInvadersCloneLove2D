@@ -60,7 +60,7 @@ function checkLaser()
               points = points + 3
             end
           elseif loveframes.GetState() == "lvl2" then
-            if b.hp >= 1 then
+            if b.hp == 1 then
               table.remove(lasers, i)
               love.audio.play(gainpoint)
               b.hp = b.hp - 1
@@ -71,7 +71,7 @@ function checkLaser()
               else
                 points = points + 3
               end
-            elseif b.hp <= 0 then
+            else
               love.audio.play(gainpoint)
               table.remove(lasers, i)
               table.remove(invadersDraw, j)

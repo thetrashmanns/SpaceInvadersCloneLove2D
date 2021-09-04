@@ -48,11 +48,7 @@ function invaderstwo.load()
     invader.x = column * (invader.w + 12)
     invader.y = row * (invader.h + 12)
     invader.r = row --Used for determining what invader to draw
-    if run > 1 then
-      invader.hp = 2
-    else
-      invader.hp = 1
-    end
+    invader.hp = 1
     table.insert(invadersDraw, invader)
     column = column + 1
     if column == 8 then
