@@ -231,7 +231,7 @@ distribution.
         loveframes.SetState("game")
       elseif previousState == "win" and run < 2 then
         loveframes.SetState("lvl2")
-      elseif previousState == "win" and run >= 2 then
+      elseif previousState == "win" and run == 2 then
         loveframes.SetState("lvl3")
       end
     end
