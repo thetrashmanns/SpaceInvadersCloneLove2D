@@ -40,7 +40,11 @@ function checkBullet()
         invaderW = 81
         invaderH = 25
       end
-      local invaderX = b.x
+      if b.r == 1 or b.r == 2 or b.r == 5 or b.r == 6 then
+        local invaderX = b.x + 10
+      else
+        local invaderX = b.x + 16
+      end
       local invaderY = b.y
       if laserX < invaderX + invaderW and invaderX < laserX + laserW then
         if laserY < invaderY + invaderH and invaderY < laserY + laserH then
