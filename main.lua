@@ -120,7 +120,7 @@ distribution.
       moveDown = moveDown - dt
       player.x = player.x + (player.xs * dt)
       checkWalls()
-      checkBullet()
+      checkLaser()
       for i,v in ipairs(lasers) do
         v.x = v.x + (v.dx * dt)
         v.y = v.y - (v.dy * dt)

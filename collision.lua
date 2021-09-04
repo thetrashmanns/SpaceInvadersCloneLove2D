@@ -26,7 +26,7 @@ Please note: Adding another level isn't modular AT ALL so be
 ready to spend sometime doing so but I'm working on making
 it modular
 ]]
-function checkBullet()
+function checkLaser()
   for i,v in ipairs(lasers) do
     local laserX = v.x
     local laserY = v.y
