@@ -145,6 +145,7 @@ distribution.
       love.graphics.print("Current Score: " .. points, 350, 120)
     end
     if loveframes.GetState() == "game" or loveframes.GetState() == "pause" or loveframes.GetState() == "lvl2" then
+      love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(playeri, player.x, player.y)
       for i,v in ipairs(lasers) do
         love.graphics.draw(laser, v.x, v.y)
