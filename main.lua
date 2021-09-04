@@ -56,7 +56,6 @@ distribution.
     require ("collision")
     require ("invaders")
     lasers = {}
-    invaders.load()
     loveframes.SetState("mainmenu")
     local startButton = loveframes.Create("button")
     startButton:SetState("mainmenu")
@@ -64,6 +63,7 @@ distribution.
     startButton:SetText("Start")
     startButton:SetWidth(170)
     startButton.OnClick = function(object, x, y)
+      invaders.load()
       previousState = "mainmenu"
       loveframes.SetState("game")
     end
@@ -115,11 +115,19 @@ distribution.
     end
     local quitGameW = loveframes.Create("button")
     quitGameW:SetState("win")
-    quitGameW:SetPos(320, 318)
+    quitGameW:SetPos(320, 348)
     quitGameW:SetText("Quit the game.")
     quitGameW:SetWidth(170)
     quitGameW.OnClick = function(object, x, y)
       love.event.quit()
+    end
+    local returnMain = loveframes.Create("button")
+    returnMain:SetState("win")
+    returnMain:SetPos(320, 318)
+    returnMain:SetText("Return to Main Menu.")
+    returnMain:SetWidth(170)
+    returnMain.OnClick = function(object, x, y)
+      love.load()
     end
   end
 
