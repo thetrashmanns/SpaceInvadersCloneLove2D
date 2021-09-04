@@ -21,7 +21,7 @@ end
 --[[
 My mess :) only because I'm a beginner who is self taught lol
 Anyways this detects if a laser hit an invader and if the player
-has killed all of the invaders if they have it moves to level 2
+has killed all of the invaders it moves to level 2
 Please note: Adding another level isn't modular AT ALL so be
 ready to spend sometime doing so but I'm working on making
 it modular
