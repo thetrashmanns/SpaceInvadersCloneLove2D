@@ -64,6 +64,7 @@ distribution.
     startButton:SetText("Start")
     startButton:SetWidth(170)
     startButton.OnClick = function(object, x, y)
+      previousState = "mainmenu"
       loveframes.SetState("game")
     end
     local quitButton = loveframes.Create("button")
@@ -98,12 +99,19 @@ distribution.
     newGameW:SetText("Continue")
     newGameW:SetWidth(170)
     newGameW.OnClick = function(object, x, y)
-      loveframes.SetState("lvl2")
-      invadersDraw = {}
-      invaderstwo.load()
+      run = run + 1
+      previousState = "win"
+      if run == 1 then
+        invadersDraw = {}
+        loveframes.SetState("lvl2")
+        invaderstwo.load()
+      elseif run == 2 then
+        invadersDraw = {}
+        loveframes.SetState("lvl3")
+        invadersthree.load()
+      end
       won = false
       lost = false
-      run = run + 1
     end
     local quitGameW = loveframes.Create("button")
     quitGameW:SetState("win")
@@ -116,7 +124,8 @@ distribution.
   end
 
   function love.update(dt)
-    if loveframes.GetState() == "game" or loveframes.GetState() == "lvl2" then
+    local state = loveframes.GetState()
+    if state == "game" or state == "lvl2" or state == "lvl3" then
       moveDown = moveDown - dt
       player.x = player.x + (player.xs * dt)
       checkWalls()
@@ -131,20 +140,21 @@ distribution.
   end
 
   function love.draw()
-    if loveframes.GetState() == "mainmenu" then
+    local state = loveframes.GetState()
+    if state == "mainmenu" then
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(logo, 275, 0)
     end
-    if loveframes.GetState() == "lose" then
+    if state == "lose" then
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(losetitle, 320, 0)
     end
-    if loveframes.GetState() == "win" then
+    if state == "win" then
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(wintitle, 320, 0)
       love.graphics.print("Current Score: " .. points, 350, 120)
     end
-    if loveframes.GetState() == "game" or loveframes.GetState() == "pause" or loveframes.GetState() == "lvl2" then
+    if state == "game" or state == "pause" or state == "lvl2" or state == "lvl3" then
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(playeri, player.x, player.y)
       for i,v in ipairs(lasers) do
@@ -181,7 +191,8 @@ distribution.
   end
 
   function love.mousepressed(x, y, button)
-    if loveframes.GetState() == "game" or loveframes.GetState() == "lvl2" then
+    local state = loveframes.GetState()
+    if state == "game" or state == "lvl2" or state == "lvl3" then
       if button == 1 then
         local laser = {}
         laser.x = player.x + 45
@@ -199,6 +210,7 @@ distribution.
   end
 
   function love.keypressed(key, scancode, isrepeat)
+    local state = loveframes.GetState()
     if scancode == "d" then
       if player.xs <= 160 then
         player.xs = 0
@@ -215,13 +227,20 @@ distribution.
       loveframes.SetState("pause")
     end
     if scancode == "r" then
-      loveframes.SetState("game")
+      if previousState == "mainmenu" then
+        loveframes.SetState("game")
+      elseif previousState == "win" and run < 2 then
+        loveframes.SetState("lvl2")
+      elseif previousState == "win" and run >= 2 then
+        loveframes.SetState("lvl3")
+      end
     end
     loveframes.keypressed(key, isrepeat)
   end
 
   function love.keyreleased(key)
-    if key == "a" or key == "d" and loveframes.GetState() == "game" or loveframes.GetState() == "lvl2" then
+    local state = loveframes.GetState()
+    if key == "a" or key == "d" and state == "game" or state == "lvl2" or state == "lvl3" then
       player.xs = 0
     end
     loveframes.keyreleased(key)

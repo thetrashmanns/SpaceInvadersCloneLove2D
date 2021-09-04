@@ -1,5 +1,6 @@
 invaders = {}
 invaderstwo = {}
+invadersthree = {}
 invadersDraw = {}
 --This creates the invaders
 function invaders.load()
@@ -49,6 +50,26 @@ function invaderstwo.load()
     invader.y = row * (invader.h + 12)
     invader.r = row --Used for determining what invader to draw
     invader.hp = 1
+    table.insert(invadersDraw, invader)
+    column = column + 1
+    if column == 8 then
+      column = 0
+      row = row + 1
+    end
+  end
+end
+
+function invadersthree.load()
+  local column = 0
+  local row = 1
+  while 6 >= row do
+    invader = {}
+    invader.w = love.graphics.getWidth()/8 - 12
+    invader.h = 25
+    invader.x = column * (invader.w + 12)
+    invader.y = row * (invader.h + 12)
+    invader.r = row --Used for determining what invader to draw
+    invader.hp = 2
     table.insert(invadersDraw, invader)
     column = column + 1
     if column == 8 then
