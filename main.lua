@@ -240,7 +240,7 @@ distribution.
 
   function love.keyreleased(key)
     local state = loveframes.GetState()
-    if key == "a" or key == "d" and state == "game" or state == "lvl2" or state == "lvl3" then
+    if key == "a" or key == "d" then
       player.xs = 0
     end
     loveframes.keyreleased(key)
