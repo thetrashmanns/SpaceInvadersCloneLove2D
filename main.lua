@@ -167,7 +167,7 @@ distribution.
         elseif v.r == 5 then
           love.graphics.setColor(1, 0, 0, 1)
           love.graphics.draw(invader3, v.x + 10, v.y)
-        elseif v.r == 6 then
+        else
           love.graphics.setColor(1, 0, 0, 1)
           love.graphics.draw(invader3f2, v.x + 10, v.y)
         end
