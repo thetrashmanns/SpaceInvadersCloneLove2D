@@ -57,6 +57,7 @@ distribution.
     require ("collision")
     require ("invaders")
     lasers = {}
+    love.window.setMode(800, 600)
     loveframes.SetState("mainmenu")
     local startButton = loveframes.Create("button")
     startButton:SetState("mainmenu")
