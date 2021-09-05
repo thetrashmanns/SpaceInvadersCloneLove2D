@@ -26,6 +26,7 @@ Please note: Adding another level isn't modular AT ALL so be
 ready to spend sometime doing so
 ]]
 function checkLaser()
+  local state = loveframes.GetState()
   for i,v in ipairs(lasers) do
     local laserX = v.x
     local laserY = v.y
@@ -47,7 +48,7 @@ function checkLaser()
       local invaderY = b.y
       if laserX < invaderX + invaderW and invaderX < laserX + laserW then
         if laserY < invaderY + invaderH and invaderY < laserY + laserH then
-          if loveframes.GetState() == "game" then
+          if state == "game" then
             table.remove(lasers, i)
             table.remove(invadersDraw, j)
             love.audio.play(gainpoint)
@@ -58,7 +59,7 @@ function checkLaser()
             else
               points = points + 3
             end
-          elseif loveframes.GetState() == "lvl2" then
+          elseif state == "lvl2" then
             if b.hp == 1 then
               table.remove(lasers, i)
               love.audio.play(gainpoint)
@@ -82,7 +83,7 @@ function checkLaser()
                 points = points + 3
               end
             end
-          elseif loveframes.GetState() == "lvl3" then
+          elseif state == "lvl3" then
             if b.hp >= 1 then
               table.remove(lasers, i)
               love.audio.play(gainpoint)
