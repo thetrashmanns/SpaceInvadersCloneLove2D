@@ -174,21 +174,21 @@ distribution.
         love.graphics.draw(laser, v.x, v.y)
       end
       for j,b in ipairs(invadersDraw) do
-        if v.r == 1 then --[[eLsE iF anyways this elseif chain determines which invader to draw,
+        if b.r == 1 then --[[eLsE iF anyways this elseif chain determines which invader to draw,
           based upon which row it's on
           ]]
           love.graphics.setColor(0.54, 0.67, 1, 1)
           love.graphics.draw(invader1, b.x + 10, b.y)
-        elseif v.r == 2 then
+        elseif b.r == 2 then
           love.graphics.setColor(0.54, 0.67, 1, 1)
           love.graphics.draw(invader1f2, b.x + 10, b.y)
-        elseif v.r == 3 then
+        elseif b.r == 3 then
           love.graphics.setColor(1, 0.74, 0.28, 1)
           love.graphics.draw(invader2, b.x + 16, b.y)
-        elseif v.r == 4 then
+        elseif b.r == 4 then
           love.graphics.setColor(1, 0.74, 0.28, 1)
           love.graphics.draw(invader2f2, b.x + 16, b.y)
-        elseif v.r == 5 then
+        elseif b.r == 5 then
           love.graphics.setColor(1, 0, 0, 1)
           love.graphics.draw(invader3, b.x + 10, b.y)
         else
