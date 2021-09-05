@@ -82,6 +82,7 @@ distribution.
     newGameL:SetWidth(170)
     newGameL.OnClick = function(object, x, y)
       loveframes.SetState("mainmenu")
+      points = 0
       invadersDraw = {}
       invaders.load()
     end
