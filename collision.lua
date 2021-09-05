@@ -33,7 +33,7 @@ function checkLaser()
     local laserH = 35
     for j,b in ipairs(invadersDraw) do
       if b.r == 3 or b.r == 4 then
-        invaderW = 80
+        invaderW = 69
         invaderH = 19
       else
         invaderW = 81
