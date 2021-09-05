@@ -206,7 +206,7 @@ distribution.
     local state = loveframes.GetState()
     if state == "game" or state == "lvl2" or state == "lvl3" then
       if button == 1 and shootCooldown <= 0 then
-        shootCooldown = shootCooldown + 0.5
+        shootCooldown = shootCooldown + 1
         local laser = {}
         laser.x = player.x + 45
         laser.y = player.y - 40
