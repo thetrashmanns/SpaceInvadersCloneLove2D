@@ -50,6 +50,7 @@ distribution.
     }
     run = 0
     moveDown = 0
+    shootCooldown = 0
     points = 0
     lost = false
     won = false
@@ -136,6 +137,7 @@ distribution.
     local state = loveframes.GetState()
     if state == "game" or state == "lvl2" or state == "lvl3" then
       moveDown = moveDown - dt
+      shootCooldown = shootCooldown - dt
       player.x = player.x + (player.xs * dt)
       checkWalls()
       checkLaser()
@@ -202,7 +204,8 @@ distribution.
   function love.mousepressed(x, y, button)
     local state = loveframes.GetState()
     if state == "game" or state == "lvl2" or state == "lvl3" then
-      if button == 1 then
+      if button == 1 and shootCooldown <= 0 then
+        shootCooldown = shootCooldown + 0.5
         local laser = {}
         laser.x = player.x + 45
         laser.y = player.y - 40
