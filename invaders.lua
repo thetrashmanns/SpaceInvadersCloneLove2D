@@ -69,7 +69,7 @@ function invadersthree.load()
     invader.x = column * (invader.w + 12)
     invader.y = row * (invader.h + 12)
     invader.r = row --Used for determining what invader to draw
-    invader.hp = 2
+    invader.hp = 2 --Used for determining what the invader's hp is
     table.insert(invadersDraw, invader)
     column = column + 1
     if column == 8 then
